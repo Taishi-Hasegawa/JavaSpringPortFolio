@@ -20,35 +20,47 @@
 		<!-- 社員ID -->
 		<div class="form-group">
 			<label for="employeeId">社員ID</label> <input type="text"
-				class="form-control" th:field="*{employeeId}" />
+				class="form-control" th:field="*{employeeId}"
+				th:errorclass="is-invalid" />
+			<div class="invalid-feedback" th:errors="*{employeeId}"></div>
 		</div>
 		<!-- パスワード -->
 		<div class="form-group">
 			<label for="password">パスワード</label> <input type="text"
-				class="form-control" th:field="*{password}" />
+				class="form-control" th:field="*{password}"
+				th:errorclass="is-invalid" />
+			<div class="invalid-feedback" th:errors="*{password}"></div>
 		</div>
 		<!-- 社員名 -->
 		<div class="form-group">
 			<label for="employeeName">社員名</label> <input type="text"
-				class="form-control" th:field="*{employeeName}" />
+				class="form-control" th:field="*{employeeName}"
+				th:errorclass="is-invalid" />
+			<div class="invalid-feedback" th:errors="*{employeeName}"></div>
 		</div>
 		<!-- 部署 -->
 		<div class="form-group">
 			<label for="deploy">部署</label> <input type="text"
-				class="form-control" th:field="*{deploy}" />
+				class="form-control" th:field="*{deploy}" th:errorclass="is-invalid" />
+			<div class="invalid-feedback" th:errors="*{deploy}"></div>
 		</div>
 		<!-- 誕生日 -->
 		<div class="form-group">
 			<label for="birthday">誕生日</label> <input type="text"
-				class="form-control" placeholder="yyyy/MM/dd" th:field="*{birthday}" />
+				class="form-control" placeholder="yyyy/MM/dd" th:field="*{birthday}"
+				th:errorclass="is-invalid" />
+			<div class="invalid-feedback" th:errors="*{birthday}"></div>
 		</div>
 		<!-- 性別 -->
 		<div class="form-group">
 			<div th:each="item : ${genderMap}" class="form-check-inline">
 				<input type="radio" class="form-check-input"
-					th:value="${item.value}" th:field="*{gender}" /> <label
-					class="form-check-label" th:text="${item.key}"></label>
+					th:value="${item.value}" th:field="*{gender}"
+					th:errorclass="is-invalid" /> <label class="form-check-label"
+					th:text="${item.key}"></label>
 			</div>
+			<div class="text-danger" th:if="${#fields.hasErrors('gender')}"
+				th:errors="*{gender}"></div>
 		</div>
 		<!-- 登録ボタン -->
 		<input type="submit" value="新規登録" class="btn btn-primary w-100 mt-3" />
